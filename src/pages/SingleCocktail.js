@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Loading from '../components/Loading'
 import { useParams, Link } from 'react-router-dom'
-import { useGlobalContext } from '../context'
+// import { useGlobalContext } from '../context'
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
 
 const SingleCocktail = () => {
   const { id } = useParams()
-  const [loading, setLoading] = React.useState(false)
-  const [cocktail, setCocktail] = React.useState(null)
+  const [loading, setLoading] = useState(false)
+  const [cocktail, setCocktail] = useState(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true)
     async function getCocktail() {
       try {
@@ -51,7 +51,6 @@ const SingleCocktail = () => {
         }
         setLoading(false)
       } catch (error) {
-        console.log(error)
         setLoading(false)
       }
     }
